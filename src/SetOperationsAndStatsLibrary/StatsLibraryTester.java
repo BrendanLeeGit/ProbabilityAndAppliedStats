@@ -1,5 +1,5 @@
+package SetOperationsAndStatsLibrary;
 import java.util.ArrayList;
-import java.util.Random;
 public class StatsLibraryTester {
     SetOperator<Double> so;
     ArrayList<Double> fullSet;
@@ -13,6 +13,20 @@ public class StatsLibraryTester {
         fullSet = new ArrayList<>();
     }
 
+    public void testEverything(){
+        populateArrayList();
+        testMMM();
+        testStandardDeviation();
+        testComplement();
+        testIntersection();
+        testUnion();
+        testCombination(2, 5);
+        testPermutation(2,5);
+    }
+
+    /**
+     * Clears the ArrayLists in the object and adds default tester values to them instead
+     */
     public void populateArrayList(){
         if(!fullSet.isEmpty()) {
             fullSet.clear();
@@ -32,6 +46,20 @@ public class StatsLibraryTester {
         b.add((double)9);
     }
 
+    /**
+     * Sets ArrayLists a, b, and fullSet to the inputted ArrayLists
+     * This method does NOT create new ArrayLists, it only passes the references
+     *
+     * @param a         A subset of the full set
+     * @param b         A subset of the full set
+     * @param fullSet   The full complete set of numbers
+     */
+    public void setArrayLists(ArrayList<Double> a, ArrayList<Double> b, ArrayList<Double> fullSet){
+        this.a = a;
+        this.b = b;
+        this.fullSet = fullSet;
+    }
+
     public void testUnion(){
         System.out.println("Testing Union:");
         answer = so.union(a, b);
@@ -46,7 +74,6 @@ public class StatsLibraryTester {
             System.out.println(aDouble);
         }
     }
-
     public void testIntersection(){
         System.out.println("Testing Intersection:");
         answer = so.intersection(a, b);
@@ -65,6 +92,12 @@ public class StatsLibraryTester {
     public void testStandardDeviation(){
         System.out.println("Standard Deviation: " + stat.standardDeviation(fullSet));
 
+    }
+    public void testCombination(int n, int r){
+        System.out.println(stat.combinations(6, 2));
+    }
+    public void testPermutation(int n, int r){
+        System.out.println(stat.permutations(6, 2));
     }
 
 }

@@ -1,26 +1,26 @@
-import java.lang.reflect.Array;
+package SetOperationsAndStatsLibrary;
 import java.util.*;
-
 public class StatsLibrary {
 
     /**
      * Returns the mean of the inputted arraylist
-     * @param inputNumbers
-     * @return
+     *
+     * @param inputNumbers  the inputted ArrayList you want the mean of
+     * @return              mean of the ArrayList
      */
     public double mean(ArrayList<Double> inputNumbers){
         double sum = 0;
         for(double singleElement : inputNumbers){
             sum = sum + singleElement;
         }
-        double result = sum / inputNumbers.size();
-        return result;
+        return sum / inputNumbers.size();
     }
 
     /**
      * Returns the mode of the inputted arraylist
-     * @param inputNumbers
-     * @return
+     *
+     * @param inputNumbers  the inputted ArrayList you want the mean of
+     * @return              mode of the ArrayList
      */
     public Double mode(ArrayList<Double> inputNumbers){
         //Keep track of distinct numbers and the occurrence of each
@@ -32,14 +32,14 @@ public class StatsLibrary {
         occurrences.add(0);
 
         //go through set, incrementing occurrences of each distinct number and adding as needed
-        for (int i = 0; i < inputNumbers.size(); i++){
-            for (int j = 0; j < distinctDoubles.size(); j++){
-                if (Objects.equals(inputNumbers.get(i), distinctDoubles.get(j))){
+        for (Double inputNumber : inputNumbers) {
+            for (int j = 0; j < distinctDoubles.size(); j++) {
+                if (Objects.equals(inputNumber, distinctDoubles.get(j))) {
                     occurrences.set(j, occurrences.get(j) + 1);
                     break;
                 }
             }
-            distinctDoubles.add(inputNumbers.get(i));
+            distinctDoubles.add(inputNumber);
             occurrences.add(1);
         }
 
@@ -69,7 +69,8 @@ public class StatsLibrary {
 
     public double median(ArrayList<Double> inputNumbers){
         Sorter sort = new Sorter();
-        Collections.sort(inputNumbers);
+        //Collections.sort(inputNumbers);   //Collections sort
+        sort.sort(inputNumbers); //personal sort
         if (inputNumbers.size() % 2 == 0){
             int leftHalf = inputNumbers.size() / 2 - 1;
             int rightHalf = leftHalf + 1;
@@ -90,13 +91,11 @@ public class StatsLibrary {
     }
 
     public double combinations(int n, int r){
-        double result = (factorial(n) / (factorial(r) * factorial(n-r)));
-        return result;
+        return (factorial(n) / (factorial(r) * factorial(n-r)));
     }
 
     public double permutations(int n, int r){
-        double result = (factorial(n) / (factorial(n-r)));
-        return result;
+        return (factorial(n) / (factorial(n-r)));
     }
 
     public double factorial(int n){
