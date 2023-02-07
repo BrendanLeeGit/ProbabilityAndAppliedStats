@@ -1,7 +1,5 @@
 package SetOperationsAndStatsLibrary;
-/**
- * @author Brendan
- */
+
 import java.util.ArrayList;
 
 public class Main {
@@ -29,7 +27,6 @@ public class Main {
         for (Double aDouble : sortTestArrayList) {
             System.out.println(aDouble);
         }
-
 
     }
 }

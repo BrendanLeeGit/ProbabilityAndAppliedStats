@@ -3,13 +3,14 @@ import java.util.*;
 public class StatsLibrary {
 
     /**
-     * Returns the mean of the inputted arraylist
+     * Returns the mean of the inputted arraylist.
      *
      * @param inputNumbers  the inputted ArrayList you want the mean of
      * @return              mean of the ArrayList
      */
     public double mean(ArrayList<Double> inputNumbers){
         double sum = 0;
+        //Iterate through ArrayList adding each element to the sum
         for(double singleElement : inputNumbers){
             sum = sum + singleElement;
         }
@@ -17,7 +18,7 @@ public class StatsLibrary {
     }
 
     /**
-     * Returns the mode of the inputted arraylist
+     * Returns the mode of the inputted arraylist.
      *
      * @param inputNumbers  the inputted ArrayList you want the mean of
      * @return              mode of the ArrayList
@@ -67,21 +68,39 @@ public class StatsLibrary {
         return distinctDoubles.get(highestOccurrenceIndex);
     }
 
+    /**
+     * Returns median of the inputted ArrayList.
+     * Sorts the ArrayList as well, so need a different method if you want to keep the original intact.
+     *
+     * @param inputNumbers The ArrayList you want the median of
+     * @return             The median of the ArrayList
+     */
     public double median(ArrayList<Double> inputNumbers){
+        //Begin by sorting ArrayList
+        //Note: To make a method that doesn't mess with the original AL, simply copy elements to a new AL with a loop
         Sorter sort = new Sorter();
-        //Collections.sort(inputNumbers);   //Collections sort
-        sort.sort(inputNumbers); //personal sort
+        sort.sort(inputNumbers);
+        //If the ArrayList size is even, take the average of the middle two indices' values
         if (inputNumbers.size() % 2 == 0){
             int leftHalf = inputNumbers.size() / 2 - 1;
             int rightHalf = leftHalf + 1;
             return ((inputNumbers.get(leftHalf) + inputNumbers.get(rightHalf)) / 2);
         }
+        //If it's odd, just select the index in the middle
         int index = inputNumbers.size() / 2;
         return inputNumbers.get(index);
     }
 
+    /**
+     * Returns the standard deviation of the inputted ArrayList
+     *
+     * @param someList The ArrayList you want the standard deviation for
+     * @return         The standard deviation of the inputted ArrayList
+     */
     public double standardDeviation(ArrayList<Double> someList){
+        //Find mean of the ArrayList
         double mean = mean(someList);
+        //Follow the equation
         double sumOfSquares = 0;
         for (double d : someList){
             d = d - mean;
@@ -90,14 +109,38 @@ public class StatsLibrary {
         return Math.sqrt(sumOfSquares/(double)(someList.size() - 1));
     }
 
+    /**
+     * Return the probability for a combinations problem
+     * Reminder that combinations is used when the order doesn't actually matter
+     * Generally problems require that you divide one result of a combination(n, r) call by another one
+     *
+     * @param n
+     * @param r
+     * @return  Returns the decimal probability of a combination occurring
+     */
     public double combinations(int n, int r){
         return (factorial(n) / (factorial(r) * factorial(n-r)));
     }
 
+    /**
+     * Return the probability for a permutations problem
+     * Reminder that permutations is used when the order does matter
+     *
+     * @param n
+     * @param r
+     * @return  Returns the decimal probability of a permutation occurring
+     */
     public double permutations(int n, int r){
         return (factorial(n) / (factorial(n-r)));
     }
 
+    /**
+     * Finds the value of the factorial of a number
+     * Ex. 6! becomes factorial(6)
+     *
+     * @param n the integer you want the factorial of
+     * @return  Returns the resulting factorial as a double
+     */
     public double factorial(int n){
         double result = 1;
         for(int i = n; i > 0; i--){

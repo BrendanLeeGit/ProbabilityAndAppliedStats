@@ -10,6 +10,7 @@ public class CalcProbability {
         people = new Person[peopleCount];
         day = new HashMap<>();
         resetDayCount();
+        populatePeople();
     }
 
     public void resetDayCount(){
@@ -20,7 +21,7 @@ public class CalcProbability {
 
     public void populatePeople(){
         Random rand = new Random();
-        for (int i = 0; i < 27; i++){
+        for (int i = 0; i < people.length; i++){
             people[i] = new Person(rand.nextInt(365));
         }
     }
