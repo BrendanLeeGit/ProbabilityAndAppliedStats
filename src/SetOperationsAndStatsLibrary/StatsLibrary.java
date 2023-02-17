@@ -1,5 +1,6 @@
 package SetOperationsAndStatsLibrary;
 import java.util.*;
+import java.math.BigInteger;
 public class StatsLibrary {
 
     /**
@@ -118,8 +119,8 @@ public class StatsLibrary {
      * @param r
      * @return  Returns the decimal probability of a combination occurring
      */
-    public double combinations(int n, int r){
-        return (factorial(n) / (factorial(r) * factorial(n-r)));
+    public String combinations(int n, int r){
+        return (factorial(n).divide((factorial(r).multiply(factorial(n-r))))).toString();
     }
 
     /**
@@ -130,8 +131,8 @@ public class StatsLibrary {
      * @param r
      * @return  Returns the decimal probability of a permutation occurring
      */
-    public double permutations(int n, int r){
-        return (factorial(n) / (factorial(n-r)));
+    public String permutations(int n, int r){
+        return factorial(n).divide((factorial(n-r))).toString();
     }
 
     /**
@@ -139,12 +140,15 @@ public class StatsLibrary {
      * Ex. 6! becomes factorial(6)
      *
      * @param n the integer you want the factorial of
-     * @return  Returns the resulting factorial as a double
+     * @return  Returns the resulting factorial as a BigInteger
      */
-    public double factorial(int n){
-        double result = 1;
+    public BigInteger factorial(int n){
+        if (n == 0){
+            return BigInteger.valueOf(n);
+        }
+        BigInteger result = BigInteger.valueOf(1);
         for(int i = n; i > 0; i--){
-            result *= i;
+            result = result.multiply(BigInteger.valueOf(i));
         }
         return result;
     }
