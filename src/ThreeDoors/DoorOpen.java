@@ -7,6 +7,13 @@ public class DoorOpen {
     int revealedDoor;
     Random rand = new Random();
 
+    /**
+     * Begins running the simulation of the three doors game.
+     *
+     * @param games         The # of games played. The higher the number, the higher the accuracy
+     * @param switchDoor    Whether you want the chosen door to be switched after the reveal or not. True means switch
+     * @return              Returns total wins divided by the # of games
+     */
     public double playGames(int games, boolean switchDoor) {
         double wins = 0;
         for (int i = 0; i < games; i++) {

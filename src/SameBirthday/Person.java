@@ -10,10 +10,18 @@ public class Person {
         this.day = day;
     }
 
+    /**
+     * Get method.
+     * @return  Returns the birthday int of the current person
+     */
     public int getDay(){
         return day;
     }
 
+    /**
+     * Set method to change the person's birthday int.
+     * @param day   The int birthday you want the person to have
+     */
     public void setDay(int day){
         this.day = day;
     }
