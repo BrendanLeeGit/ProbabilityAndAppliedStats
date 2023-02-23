@@ -13,7 +13,7 @@ public class Main {
         System.out.println(s.factorial(100));
         System.out.println(s.factorial(110));
         System.out.println(s.factorial(120));
-        //System.out.println(s.combinations())
+        System.out.println(s.binomialDistribution(5, 3, (double).75));
 
 
 

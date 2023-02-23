@@ -152,4 +152,31 @@ public class StatsLibrary {
         }
         return result;
     }
+
+    /**
+     * Finds the... you guessed it. Binomial distribution!
+     * This is for an exact number of wanted successes. See the polymorphismed change if you want to do at least or at most
+     *
+     * @param n Number of trials
+     * @param y Number of wanted successes
+     * @param p
+     * @return
+     */
+    public double binomialDistribution(int n, int y, double p){
+        double q = 1 - p;
+        return Double.parseDouble(combinations(n, y)) * Math.pow(p, y) * Math.pow(q, n - y);
+    }
+
+    public double binomialDistribution(int n1, int n2, int y, double p){
+        double result = 0;
+        if (n1 < n2){
+            int temp = n2;
+            n2 = n1;
+            n1 = temp;
+        }
+        for (int i = n1; i <= n2; i++){
+            result += binomialDistribution(i, y, p);
+        }
+        return result;
+    }
 }
