@@ -167,6 +167,18 @@ public class StatsLibrary {
         return Double.parseDouble(combinations(n, y)) * Math.pow(p, y) * Math.pow(q, n - y);
     }
 
+    /**
+     * Here lies the binomial distribution that handles those "at least" or "at most" cases
+     * n1 and n2 act as the range for the binomial distributions that need to added together/
+     * Otherwise, it acts as intended
+     *
+     * @param n1
+     * @param n2
+     * @param y
+     * @param p
+     * @return
+     */
+
     public double binomialDistribution(int n1, int n2, int y, double p){
         double result = 0;
         if (n1 < n2){
