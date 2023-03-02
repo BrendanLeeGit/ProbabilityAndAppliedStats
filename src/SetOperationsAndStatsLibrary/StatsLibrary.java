@@ -1,6 +1,8 @@
 package SetOperationsAndStatsLibrary;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
 import java.math.BigInteger;
+
 public class StatsLibrary {
 
     /**
@@ -93,7 +95,7 @@ public class StatsLibrary {
     }
 
     /**
-     * Returns the standard deviation of the inputted ArrayList
+     * Finds the standard deviation of an inputted ArrayList of Doubles.
      *
      * @param someList The ArrayList you want the standard deviation for
      * @return         The standard deviation of the inputted ArrayList
@@ -111,25 +113,25 @@ public class StatsLibrary {
     }
 
     /**
-     * Return the probability for a combinations problem
-     * Reminder that combinations is used when the order doesn't actually matter
-     * Generally problems require that you divide one result of a combination(n, r) call by another one
+     * Return the probability for a combinations problem.
+     * Reminder that combinations is used when the order doesn't actually matter.
+     * Generally problems require that you divide one result of a combination(n, r) call by another one.
      *
-     * @param n
-     * @param r
-     * @return  Returns the decimal probability of a combination occurring
+     * @param n Number of distinct objects total
+     * @param r The amount of objects being taken
+     * @return  Returns the decimal probability of the specific event occurring
      */
     public String combinations(int n, int r){
         return (factorial(n).divide((factorial(r).multiply(factorial(n-r))))).toString();
     }
 
     /**
-     * Return the probability for a permutations problem
-     * Reminder that permutations is used when the order does matter
+     * Returns the probability for a permutations problem.
+     * Reminder that permutations is used when the order does matter.
      *
-     * @param n
-     * @param r
-     * @return  Returns the decimal probability of a permutation occurring
+     * @param n Number of distinct objects total
+     * @param r The amount of objects being taken
+     * @return  Returns the decimal probability of the specific event occurring
      */
     public String permutations(int n, int r){
         return factorial(n).divide((factorial(n-r))).toString();
@@ -143,6 +145,7 @@ public class StatsLibrary {
      * @return  Returns the resulting factorial as a BigInteger
      */
     public BigInteger factorial(int n){
+        //no need to go through a loop if n is 0
         if (n == 0){
             return BigInteger.valueOf(n);
         }
@@ -155,12 +158,13 @@ public class StatsLibrary {
 
     /**
      * Finds the... you guessed it. Binomial distribution!
-     * This is for an exact number of wanted successes. See the polymorphismed change if you want to do at least or at most
+     * This is for an exact number of wanted successes. See the binomialDistribution() with four parameters to handle
+     * a "at most" or "at least" case.
      *
      * @param n Number of trials
      * @param y Number of wanted successes
-     * @param p
-     * @return
+     * @param p Chance of a success
+     * @return  Probability of this situation occuring.
      */
     public double binomialDistribution(int n, int y, double p){
         double q = 1 - p;
@@ -168,27 +172,36 @@ public class StatsLibrary {
     }
 
     /**
-     * Here lies the binomial distribution that handles those "at least" or "at most" cases
-     * n1 and n2 act as the range for the binomial distributions that need to added together/
-     * Otherwise, it acts as intended
+     * Here lies the binomial distribution that handles those "at most" cases
+     * n1 and n2 act as the range for the binomial distributions that need to added together
+     * For example, for a problem like "at most 3", n1 would be 1 and n2 would be 3.
+     * If it's a problem for "at least", find the complement of the "at most" that this method returns.
+     * AKA, subtract this result from 1.
      *
-     * @param n1
-     * @param n2
-     * @param y
-     * @param p
-     * @return
+     * @param n The number of trials
+     * @param y1 The lesser endpoint of the interval of successes
+     * @param y2 The greater endpoint of the interval of successes
+     * @param p The chance of success
+     * @return Returns the percentage chance of this situation occurring
      */
 
-    public double binomialDistribution(int n1, int n2, int y, double p){
+    public double binomialDistribution(int n, int y1, int y2, double p){
         double result = 0;
-        if (n1 < n2){
-            int temp = n2;
-            n2 = n1;
-            n1 = temp;
+        //safe guard for if someone enters in a higher y2, though throwing an exception would likely be better
+        if (y2 < y1){
+            int temp = y1;
+            y1 = y2;
+            y2 = temp;
         }
-        for (int i = n1; i <= n2; i++){
-            result += binomialDistribution(i, y, p);
+        //call the original binomialDistribution method multiple times and add up the results
+        for (int i = y1; i <= y2; i++){
+            result += binomialDistribution(n, i, p);
         }
         return result;
+    }
+
+    public double geometricDistribution(int y, double p){
+        double q = 1 - p;
+        return Math.pow(q, y - 1) * p;
     }
 }
