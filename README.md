@@ -1,6 +1,6 @@
 # ProbabilityAndAppliedStats
 Homework and Projects
-I'll use this README to clarify what each file is for.
+I'll use this README to clarify what each file is for, as well as the weird contributor situation.
 
 CSVStuff is for the CSV creation and reading program.
 SameBirthday is the program that calculates the chance of having a repeated birthday in a room full of people.
@@ -9,4 +9,8 @@ ThreeDoors is the program that simulates the Monte Carlo problem with the game s
 
 Beginning of Semester Histograms is the excel work we did in the very first classes.
 Histograms is for the Binomial and Geometric distribution problems we solved and graphed.
-output.csv is the CSV file created and read by CSVStuff.
+output.csv is the CSV file created and read by CSVStuff. 
+GitHub report is the one page essay on git workflow.
+
+Additionally, you may see that GameUnmaker is also a contributor for some of the code. 
+That's my other account. I had a few issues in the beginning with using the correct account to push my changes.
