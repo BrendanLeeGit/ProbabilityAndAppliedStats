@@ -15,13 +15,13 @@ public class FunctionOutput {
         inputs = new ArrayList<>();
     }
 
-    public void buildOutputArrayList(double x, double range, double increment, double m, double b){
+    public void buildOutputArrayList(double x1, double x2, double increment, double m, double b){
         double result = 1;
-        while (Double.compare(x, range) == 1 || Double.compare(x,range) < 0){
-            result = x * m + b;
+        while (Double.compare(x1, x2) == 1 || Double.compare(x1,x2) < 0){
+            result = x1 * m + b;
             outputs.add(result);
-            inputs.add(x);
-            x += increment;
+            inputs.add(x1);
+            x1 += increment;
         }
     }
 
@@ -40,8 +40,8 @@ public class FunctionOutput {
 
     /**
      *
-     * @param x
-     * @param x2
+     * @param x  minimum range 
+     * @param x2 maximum range
      * @param increment
      * @param m
      * @param b
@@ -49,7 +49,6 @@ public class FunctionOutput {
      */
     public void run(double x, double x2, double increment, double m, double b) throws IOException {
         buildOutputArrayList(x, x2, increment, m, b);
-        getOutputArrayList();
         buildFile();
 
         CSVReader csvreader = new CSVReader("output.csv");
