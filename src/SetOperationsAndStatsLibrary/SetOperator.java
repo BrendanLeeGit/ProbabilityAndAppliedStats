@@ -41,7 +41,7 @@ public class SetOperator<E> {
                 }
             }
         }
-        //If arrayListB is larger, do the same thing just for B
+        //If arrayListB is larger, then the same process happens with A and B switched
         //TODO Just switch the references around if the wrong one is bigger tbh
         else{
             for (E e : arrayListB) {
