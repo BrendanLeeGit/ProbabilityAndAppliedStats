@@ -2,6 +2,9 @@
 Homework and Projects
 I'll use this README to clarify what each file is for, as well as the weird contributor situation.
 
+.idea can be mostly ignored since I didn't end up using any complicated or outside modules or anything crazy.
+src has the different directories for all of the main programming assignments.
+
 CSVStuff is for the CSV creation and reading program.
 SameBirthday is the program that calculates the chance of having a repeated birthday in a room full of people.
 SetOperationsAndStatsLibrary contains the library for every Statistics method and function we've had to code.
