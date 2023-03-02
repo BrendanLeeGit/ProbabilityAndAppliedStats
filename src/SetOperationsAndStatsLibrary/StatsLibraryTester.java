@@ -14,6 +14,9 @@ public class StatsLibraryTester {
         fullSet = new ArrayList<>();
     }
 
+    /**
+     * Tests every single function built into the library that matters.
+     */
     public void testEverything(){
         populateArrayList();
         testMMM();

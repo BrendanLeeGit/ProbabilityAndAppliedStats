@@ -78,7 +78,7 @@ public class CalcProbability {
             one by one.
             However, I don't feel like using BigDecimal, so instead of just using the above formula
             I do the division by 365 in each step to keep values small.
-            There will be some inaccuracy, but it shouldn't make too much of a difference tbh.
+            There will be some inaccuracy, but it shouldn't make too much of a difference.
          */
         double result = 1;
         for (int i = 0; i < people - 1; i++){

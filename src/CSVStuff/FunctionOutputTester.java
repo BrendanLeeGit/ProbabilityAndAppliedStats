@@ -1,5 +1,4 @@
 package CSVStuff;
-
 import java.io.IOException;
 
 public class FunctionOutputTester {
