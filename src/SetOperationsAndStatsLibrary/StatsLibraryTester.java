@@ -24,8 +24,8 @@ public class StatsLibraryTester {
         testComplement();
         testIntersection();
         testUnion();
-        testCombination(2, 5);
-        testPermutation(2,5);
+        testCombination();
+        testPermutation();
         testFactorial();
         testBinomialDistribution();
         testGeometricDistribution();
@@ -104,11 +104,11 @@ public class StatsLibraryTester {
 
     }
 
-    public void testCombination(int n, int r){
+    public void testCombination(){
         System.out.println("Combinations: " + stat.combinations(6, 2));
     }
 
-    public void testPermutation(int n, int r){
+    public void testPermutation(){
         System.out.println("Permutations: " + stat.permutations(6, 2));
     }
 
