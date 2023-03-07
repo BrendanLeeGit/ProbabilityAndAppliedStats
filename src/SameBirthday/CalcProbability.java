@@ -3,8 +3,8 @@ package SameBirthday;
 import java.util.HashMap;
 import java.util.Random;
 public class CalcProbability {
-    Person[] people;
-    HashMap<Integer, Boolean> day;
+    private Person[] people;
+    private HashMap<Integer, Boolean> day;
 
     /**
      * Initializes the hashmap for birthdays and the array of people.

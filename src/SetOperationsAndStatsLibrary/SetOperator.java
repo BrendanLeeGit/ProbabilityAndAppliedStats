@@ -11,8 +11,12 @@ public class SetOperator<E> {
      */
     public ArrayList<E> union(ArrayList<E> a, ArrayList<E> b){
         //initialize new array list for the union to be held in
-        //add every element from first array list
-        //TODO Make sure the larger ArrayList is added first
+        //add every element from larger arraylist a
+        if (a.size() < b.size()){
+            ArrayList<E> temp = a;
+            a = b;
+            b = temp;
+        }
         ArrayList<E> unionArray = new ArrayList<>(a);
         //begin adding elements from the second list only if the list doesn't already contain them
         for (E e : b) {
@@ -32,22 +36,15 @@ public class SetOperator<E> {
      */
     public ArrayList<E> intersection(ArrayList<E> arrayListA, ArrayList<E> arrayListB) {
         ArrayList<E> intersectionArrayList = new ArrayList<>();
-        //If arrayListA is larger, go through entire list and add each element to intersectionArrayList
-        //if arrayListB also contains it
-        if (arrayListA.size() > arrayListB.size()){
-            for (E e : arrayListA) {
-                if (arrayListB.contains(e)) {
-                    intersectionArrayList.add(e);
-                }
-            }
+        //make sure ArrayList A is larger by switching around references if needed
+        if (arrayListA.size() < arrayListB.size()){
+            ArrayList<E> temp = arrayListA;
+            arrayListA = arrayListB;
+            arrayListB = temp;
         }
-        //If arrayListB is larger, then the same process happens with A and B switched
-        //TODO Just switch the references around if the wrong one is bigger tbh
-        else{
-            for (E e : arrayListB) {
-                if (arrayListA.contains(e)) {
-                    intersectionArrayList.add(e);
-                }
+        for (E e : arrayListA) {
+            if (arrayListB.contains(e)) {
+                intersectionArrayList.add(e);
             }
         }
         return intersectionArrayList;
