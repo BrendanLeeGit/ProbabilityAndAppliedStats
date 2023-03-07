@@ -1,12 +1,12 @@
 package SetOperationsAndStatsLibrary;
 import java.util.ArrayList;
 public class StatsLibraryTester {
-    SetOperator<Double> so;
-    ArrayList<Double> fullSet;
-    ArrayList<Double> a;
-    ArrayList<Double> b;
-    ArrayList<Double> answer;
-    StatsLibrary stat;
+    private SetOperator<Double> so;
+    private ArrayList<Double> fullSet;
+    private ArrayList<Double> a;
+    private ArrayList<Double> b;
+    private ArrayList<Double> answer;
+    private StatsLibrary stat;
 
     public StatsLibraryTester(){
         so = new SetOperator<>();

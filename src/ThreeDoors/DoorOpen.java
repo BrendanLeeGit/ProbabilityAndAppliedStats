@@ -1,11 +1,10 @@
 package ThreeDoors;
 import java.util.Random;
 public class DoorOpen {
-    int guess;
-    int pastGuess;
-    int answer;
-    int revealedDoor;
-    Random rand = new Random();
+    private int guess;
+    private int pastGuess;
+    private int answer;
+    private int revealedDoor;
 
     /**
      * Begins running the simulation of the three doors game.
@@ -16,6 +15,8 @@ public class DoorOpen {
      */
     public double playGames(int games, boolean switchDoor) {
         double wins = 0;
+        Random rand = new Random();
+
         for (int i = 0; i < games; i++) {
             //Randomly choose the door with the car and the guess, represented by 0, 1, and 2
             guess = rand.nextInt(3);
