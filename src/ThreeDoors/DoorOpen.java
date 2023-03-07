@@ -16,6 +16,8 @@ public class DoorOpen {
     public double playGames(int games, boolean switchDoor) {
         Random rand = new Random();
         double wins = 0;
+        Random rand = new Random();
+
         for (int i = 0; i < games; i++) {
             //Randomly choose the door with the car and the guess, represented by 0, 1, and 2
             guess = rand.nextInt(3);

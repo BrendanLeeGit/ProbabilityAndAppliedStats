@@ -1,12 +1,12 @@
 package SetOperationsAndStatsLibrary;
 import java.util.ArrayList;
 public class StatsLibraryTester {
-    SetOperator<Double> so;
-    ArrayList<Double> fullSet;
-    ArrayList<Double> a;
-    ArrayList<Double> b;
-    ArrayList<Double> answer;
-    StatsLibrary stat;
+    private SetOperator<Double> so;
+    private ArrayList<Double> fullSet;
+    private ArrayList<Double> a;
+    private ArrayList<Double> b;
+    private ArrayList<Double> answer;
+    private StatsLibrary stat;
 
     public StatsLibraryTester(){
         so = new SetOperator<>();
@@ -24,8 +24,8 @@ public class StatsLibraryTester {
         testComplement();
         testIntersection();
         testUnion();
-        testCombination(2, 5);
-        testPermutation(2,5);
+        testCombination();
+        testPermutation();
         testFactorial();
         testBinomialDistribution();
         testGeometricDistribution();
@@ -104,11 +104,11 @@ public class StatsLibraryTester {
 
     }
 
-    public void testCombination(int n, int r){
+    public void testCombination(){
         System.out.println("Combinations: " + stat.combinations(6, 2));
     }
 
-    public void testPermutation(int n, int r){
+    public void testPermutation(){
         System.out.println("Permutations: " + stat.permutations(6, 2));
     }
 
