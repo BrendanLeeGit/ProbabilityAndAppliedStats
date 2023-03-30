@@ -76,5 +76,13 @@ public class FunctionOutput {
         CSVReader csvreader = new CSVReader("output.csv");
         csvreader.goThroughCSV();
         csvreader.printArrayLists();
+
+        System.out.println("Salted list:");
+        csvreader.salter(30);
+        csvreader.printArrayLists();
+
+        System.out.println("Smoothed list:");
+        csvreader.smoother(5,1);
+        csvreader.printArrayLists();
     }
 }
