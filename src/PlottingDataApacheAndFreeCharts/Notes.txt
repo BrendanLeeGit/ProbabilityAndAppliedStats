@@ -1,0 +1,10 @@
+Write a program
+Plot a function
+Plot salted data
+Smooth salted data, then print it
+
+use apache statistics library to handle data smoothing and whatever else it can do
+
+figure out how to get jars and copies of apache stats library
+
+use jfreecharts library for the plotting, grab it as a jar or dependency or whatever
