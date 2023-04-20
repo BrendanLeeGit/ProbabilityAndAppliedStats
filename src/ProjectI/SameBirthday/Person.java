@@ -1,4 +1,4 @@
-package SameBirthday;
+package ProjectI.SameBirthday;
 
 /**
  * Simple Person class, used to store a certain day for each person. Realistically could've just done an array though

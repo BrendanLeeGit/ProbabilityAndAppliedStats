@@ -1,4 +1,4 @@
-package SetOperationsAndStatsLibrary;
+package ProjectI.SetOperationsAndStatsLibrary;
 import java.util.ArrayList;
 public class StatsLibraryTester {
     private SetOperator<Double> so;

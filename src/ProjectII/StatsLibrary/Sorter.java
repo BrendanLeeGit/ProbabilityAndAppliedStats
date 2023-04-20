@@ -1,5 +1,6 @@
-package SetOperationsAndStatsLibrary;
+package ProjectII.StatsLibrary;
 import java.util.ArrayList;
+
 public class Sorter {
     /**
      * Sorts inputted ArrayList of doubles into ascending order

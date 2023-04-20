@@ -1,4 +1,4 @@
-package SetOperationsAndStatsLibrary;
+package ProjectI.SetOperationsAndStatsLibrary;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.math.BigInteger;

@@ -1,4 +1,4 @@
-package ThreeDoors;
+package ProjectI.ThreeDoors;
 import java.util.Random;
 public class DoorOpen {
     private int guess;

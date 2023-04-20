@@ -1,4 +1,4 @@
-package SameBirthday;
+package ProjectI.SameBirthday;
 
 public class CalcProbabilityTester {
     public static void main(String[] args){

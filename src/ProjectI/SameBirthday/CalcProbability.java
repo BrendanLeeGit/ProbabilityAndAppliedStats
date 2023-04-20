@@ -1,4 +1,4 @@
-package SameBirthday;
+package ProjectI.SameBirthday;
 
 import java.util.HashMap;
 import java.util.Random;
