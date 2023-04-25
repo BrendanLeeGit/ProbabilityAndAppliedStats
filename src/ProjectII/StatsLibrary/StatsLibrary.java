@@ -125,8 +125,18 @@ public class StatsLibrary {
         return (Math.pow(lambda, y) / factorial(y).doubleValue() * Math.pow(e, lambda * -1));
     }
 
+    /**
+     * Just proving the Chebyshevs theorem I suppose. With proper values, it should always come to 75% I believe.
+     *
+     * @param lowerBound        Not exactly needed, but good to have
+     * @param upperBound        Upper bound of your dataset
+     * @param mean              The mean of the dataset.
+     * @param standardDeviation The standard deviation of the dataset.
+     * @return                  The percentage of values between the bounds.
+     */
     public double chebyshevsTheorem(double lowerBound, double upperBound, double mean, double standardDeviation){
-
+        double k = (upperBound - mean) / standardDeviation;
+        return 1 - 1 / Math.pow(k, 2);
     }
 
 }
