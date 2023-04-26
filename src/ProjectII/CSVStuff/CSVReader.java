@@ -19,7 +19,7 @@ public class CSVReader {
     }
 
     /**
-     * Iterates through .csv
+     * Iterates through .csv and stores the values.
      */
     public void goThroughCSV(){
         scan.nextLine();
@@ -40,47 +40,12 @@ public class CSVReader {
     }
 
     /**
-     * Salts the values in the output ArrayList
-     * @param saltValue
+     * Basic getter.
+     *
+     * @return  The outputs array list
      */
-    public void salter(int saltValue){
-        for (int i = 0; i < outputs.size(); i++) {
-            outputs.set(i, outputs.get(i) + random.nextInt(saltValue));
-        }
+    public ArrayList<Double> getOutputs(){
+        return outputs;
     }
 
-
-    public void smoother(int range, int smoothCount){
-        //this is the base method, determines range and how many times we're smoothing this
-        for (int j = 0; j < smoothCount; j++){
-            for (int i = 0; i < outputs.size(); i++){
-                outputs.set(i, calculatePointAverage(i, range));
-            }
-        }
-    }
-
-    public double calculatePointAverage(int currentY, int range){
-        //this is likely just gonna be called over and over again for each point
-        int beginningY = currentY - range;
-        int endingY = currentY + range;
-        double total = 0;
-        double avg;
-
-        //avoid index out of bounds error, change any negative index to 0
-        if (beginningY < 0){
-            beginningY = 0;
-        }
-
-        //similarly, change any index above the max to just the range
-        if (endingY >= outputs.size()){
-            endingY = outputs.size() - 1;//-1 since it'll be 1 greater bc index starts at 0
-        }
-
-        for (int i = beginningY; i <= endingY; i++){
-            total += outputs.get(i);
-        }
-        avg = total/(endingY - beginningY);
-
-        return avg;
-    }
 }

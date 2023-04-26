@@ -8,3 +8,14 @@ use apache statistics library to handle data smoothing and whatever else it can 
 figure out how to get jars and copies of apache stats library
 
 use jfreecharts library for the plotting, grab it as a jar or dependency or whatever
+
+
+So this in particular has nothing to do with the project, but I had to jot this down for myself because why not:
+So everything is a series of 0s and 1s in binary. Essentially, every program and every bit of software is just a
+comically large number. And storage problems happen when that comically large number is too big to store.
+
+So what if we took the time to math out a function that would calculate the program for us? The function itself would
+probably use less space. I'm sure it would take absolutely forever to calculate and create the function, but once you
+did wouldn't you be able to send massive programs or bits of software with a very small function that generates the
+number for you? Similar to sending over the supplies and blueprints for a house to someone rather than bringing the
+entire built house through Marvel's helicarrier

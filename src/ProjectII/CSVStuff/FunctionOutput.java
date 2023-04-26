@@ -77,12 +77,17 @@ public class FunctionOutput {
         csvreader.goThroughCSV();
         csvreader.printArrayLists();
 
+        Smalter smalter = new Smalter();
         System.out.println("Salted list:");
-        csvreader.salter(30);
+        smalter.salter(csvreader.getOutputs(), 100);
         csvreader.printArrayLists();
 
         System.out.println("Smoothed list:");
-        csvreader.smoother(5,1);
+        smalter.smoother(csvreader.getOutputs(), 3, 2);
+        csvreader.printArrayLists();
+
+        System.out.println("Smoothed List With a Haircut");
+        smalter.cutOffEnds(csvreader.getOutputs(), 3);
         csvreader.printArrayLists();
     }
 }
