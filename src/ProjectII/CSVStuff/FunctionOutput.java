@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class FunctionOutput {
     //Using equation slope y = mx + b
-    ArrayList<Double> outputs;
-    ArrayList<Double> inputs;
-    FileWriter fileWriter;
+    private ArrayList<Double> outputs;
+    private ArrayList<Double> inputs;
+    private FileWriter fileWriter;
 
     public FunctionOutput(){
         outputs = new ArrayList<>();
@@ -39,14 +39,16 @@ public class FunctionOutput {
      *
      * @throws IOException
      */
-    public void buildFile() throws IOException {
+    public void buildFile(String fileName) throws IOException {
         //Create FileWriter object that creates an output csv file
-        fileWriter = new FileWriter("output.csv");
+        fileWriter = new FileWriter(fileName);
         fileWriter.write("x,y\n");
+
         //Write the entire outputs ArrayList on the file
         for (int i = 0; i < outputs.size(); i++){
             fileWriter.write(inputs.get(i) + "," + outputs.get(i) + "\n");
         }
+
         //Close the file to avoid issues.
         fileWriter.close();
     }
@@ -60,6 +62,14 @@ public class FunctionOutput {
     }
 
     /**
+     * Setter for the outputs ArrayList.
+     * @param outputs   The new ArrayList you would like outputs to be set to
+     */
+    public void setOutputArrayList(ArrayList<Double> outputs){
+        this.outputs = outputs;
+    }
+
+    /**
      * The run method. Drives the entire program forwards using the template pattern.
      *
      * @param x          Minimum range
@@ -70,24 +80,39 @@ public class FunctionOutput {
      * @throws IOException
      */
     public void run(double x, double x2, double increment, double m, double b) throws IOException {
-        buildOutputArrayList(x, x2, increment, m, b);
-        buildFile();
+        //Create FinalCVSPrinter, since we'll be adding the array lists as we run the program
+        FinalCSVPrinter finalCSVPrinter = new FinalCSVPrinter();
 
-        CSVReader csvreader = new CSVReader("output.csv");
+        //Create CSV with the x and y values
+        buildOutputArrayList(x, x2, increment, m, b);
+        buildFile("InitialCSV.csv");
+
+        //Read CSV and enter them into the CSVReader object
+        CSVReader csvreader = new CSVReader("InitialCSV.csv");
         csvreader.goThroughCSV();
         csvreader.printArrayLists();
+        finalCSVPrinter.addList(csvreader.getOutputs());                    //Adding ArrayList to finalCSVPrinter
 
+        //Smalter = SMelter + sALTER
+        //Salt the list and print out the results
         Smalter smalter = new Smalter();
         System.out.println("Salted list:");
         smalter.salter(csvreader.getOutputs(), 100);
         csvreader.printArrayLists();
-
+        finalCSVPrinter.addList(csvreader.getOutputs());                    //Adding again, will do this after
+                                                                            //each change
+        //Smooth the list and print out the results
         System.out.println("Smoothed list:");
         smalter.smoother(csvreader.getOutputs(), 3, 2);
         csvreader.printArrayLists();
+        finalCSVPrinter.addList(csvreader.getOutputs());
 
+        //Smooth the list but remove some values at the beginning and end depending on the range
         System.out.println("Smoothed List With a Haircut");
         smalter.cutOffEnds(csvreader.getOutputs(), 3);
         csvreader.printArrayLists();
+
+        //Finally build the file with every list combined, except for the haircut output list
+        finalCSVPrinter.buildFile("FinalCSV.csv");
     }
 }

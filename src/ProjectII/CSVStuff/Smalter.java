@@ -12,11 +12,23 @@ public class Smalter {
 
     /**
      * Salts the values in the output ArrayList
-     * @param saltValue
+     * @param saltValue    How much you want to be subtracted or added to each data point
      */
     public void salter(ArrayList<Double> outputs, int saltValue){
+        //Declare the integer we're going to be salting with and whether it's negative or positive.
+        int saltInt;
+        int negativeOrPositive;
+
+        //Loop through entire ArrayList and salt each data point
         for (int i = 0; i < outputs.size(); i++) {
-            outputs.set(i, outputs.get(i) + random.nextInt(saltValue));
+            negativeOrPositive = random.nextInt(2);   //Generate random numbers for the two local variables
+            saltInt = random.nextInt(saltValue);
+
+            //Set a 50% chance of the salt value being negative or positive.
+            if(negativeOrPositive == 0){
+                saltInt *= -1;
+            }
+            outputs.set(i, outputs.get(i) + saltInt);
         }
     }
 
