@@ -7,9 +7,12 @@ import java.util.ArrayList;
 public class FinalCSVPrinter {
     private ArrayList<ArrayList<Double>> listHolder;
     private FileWriter fileWriter;
+    private ArrayList<Double> inputs;
 
-    public FinalCSVPrinter(){
+    public FinalCSVPrinter(ArrayList<Double> inputs){
         listHolder = new ArrayList<>();
+        this.inputs = inputs;
+
     }
 
     /**
@@ -45,7 +48,7 @@ public class FinalCSVPrinter {
 
         //Write the entire outputs ArrayList on the file
         for (int i = 0; i < listHolder.get(0).size(); i++){
-            row = i + ",";
+            row = inputs.get(i) + ",";
 
             //Build row string with a loop by concatenating each output list
             for (ArrayList<Double> doubles : listHolder) {

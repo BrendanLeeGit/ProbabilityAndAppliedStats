@@ -81,7 +81,7 @@ public class FunctionOutput {
      */
     public void run(double x, double x2, double increment, double m, double b) throws IOException {
         //Create FinalCVSPrinter, since we'll be adding the array lists as we run the program
-        FinalCSVPrinter finalCSVPrinter = new FinalCSVPrinter();
+        FinalCSVPrinter finalCSVPrinter = new FinalCSVPrinter(inputs);
 
         //Create CSV with the x and y values
         buildOutputArrayList(x, x2, increment, m, b);
@@ -97,13 +97,13 @@ public class FunctionOutput {
         //Salt the list and print out the results
         Smalter smalter = new Smalter();
         System.out.println("Salted list:");
-        smalter.salter(csvreader.getOutputs(), 100);
+        smalter.salter(csvreader.getOutputs(), 10000);
         csvreader.printArrayLists();
         finalCSVPrinter.addList(csvreader.getOutputs());                    //Adding again, will do this after
                                                                             //each change
         //Smooth the list and print out the results
         System.out.println("Smoothed list:");
-        smalter.smoother(csvreader.getOutputs(), 3, 2);
+        smalter.smoother(csvreader.getOutputs(), 3, 100);
         csvreader.printArrayLists();
         finalCSVPrinter.addList(csvreader.getOutputs());
 
