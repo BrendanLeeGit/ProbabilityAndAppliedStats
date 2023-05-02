@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Smalter {
-    Random random;
+    private Random random;
 
     public Smalter(){
         random = new Random();

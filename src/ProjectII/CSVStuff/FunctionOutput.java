@@ -88,9 +88,17 @@ public class FunctionOutput {
         //Read CSV and enter them into the CSVReader object
         csvreader = new CSVReader("InitialCSV.csv");
         csvreader.goThroughCSV();
-        csvreader.printArrayLists();
     }
 
+    /**
+     * This method controls the salting and smoothing of the dataset. It salts the list and then smoothes it
+     * according to the parameters.
+     *
+     * @param saltValue     The maximum value a single index can be salted by
+     * @param smoothRange   How far to the left and right the rolling average will consider
+     * @param smoothCount   How many times the dataset will be smoothed
+     * @throws IOException
+     */
     public void runSmalter(int saltValue, int smoothRange, int smoothCount) throws IOException {
         //Create FinalCVSPrinter, since we'll be adding the array lists as we run the program
         FinalCSVPrinter finalCSVPrinter = new FinalCSVPrinter(inputs);
@@ -99,23 +107,17 @@ public class FunctionOutput {
         finalCSVPrinter.addList(csvreader.getOutputs());
 
         //Smalter = SMelter + sALTER
-        //Salt the list and print out the results
+        //Salt the list
         Smalter smalter = new Smalter();
-        System.out.println("Salted list:");
         smalter.salter(csvreader.getOutputs(), saltValue);
-        csvreader.printArrayLists();
         finalCSVPrinter.addList(csvreader.getOutputs());
 
-        //Smooth the list and print out the results
-        System.out.println("Smoothed list:");
+        //Smooth the list
         smalter.smoother(csvreader.getOutputs(), smoothRange, smoothCount);
-        csvreader.printArrayLists();
         finalCSVPrinter.addList(csvreader.getOutputs());
 
         //Smooth the list but remove some values at the beginning and end depending on the range
-        System.out.println("Smoothed List With a Haircut");
         smalter.cutOffEnds(csvreader.getOutputs(), 3);
-        csvreader.printArrayLists();
 
         //Finally build the file with every list combined, except for the haircut output list
         finalCSVPrinter.buildFile("FinalCSV.csv");

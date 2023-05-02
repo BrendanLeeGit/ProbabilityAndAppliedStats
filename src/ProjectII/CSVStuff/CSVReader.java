@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class CSVReader {
-    Scanner scan;
-    ArrayList<Double> inputs;
-    ArrayList<Double> outputs;
-    Random random;
+    private Scanner scan;
+    private ArrayList<Double> inputs;
+    private ArrayList<Double> outputs;
+    private Random random;
 
     public CSVReader(String fileName) throws FileNotFoundException {
         scan = new Scanner(new File(fileName)).useDelimiter(",|\\n");
