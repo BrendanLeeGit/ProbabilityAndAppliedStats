@@ -12,7 +12,6 @@ public class FinalCSVPrinter {
     public FinalCSVPrinter(ArrayList<Double> inputs){
         listHolder = new ArrayList<>();
         this.inputs = inputs;
-
     }
 
     /**

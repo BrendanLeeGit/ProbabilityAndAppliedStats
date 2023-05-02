@@ -8,6 +8,7 @@ public class FunctionOutput {
     private ArrayList<Double> outputs;
     private ArrayList<Double> inputs;
     private FileWriter fileWriter;
+    private CSVReader csvreader;
 
     public FunctionOutput(){
         outputs = new ArrayList<>();
@@ -80,30 +81,34 @@ public class FunctionOutput {
      * @throws IOException
      */
     public void run(double x, double x2, double increment, double m, double b) throws IOException {
-        //Create FinalCVSPrinter, since we'll be adding the array lists as we run the program
-        FinalCSVPrinter finalCSVPrinter = new FinalCSVPrinter(inputs);
-
         //Create CSV with the x and y values
         buildOutputArrayList(x, x2, increment, m, b);
         buildFile("InitialCSV.csv");
 
         //Read CSV and enter them into the CSVReader object
-        CSVReader csvreader = new CSVReader("InitialCSV.csv");
+        csvreader = new CSVReader("InitialCSV.csv");
         csvreader.goThroughCSV();
         csvreader.printArrayLists();
-        finalCSVPrinter.addList(csvreader.getOutputs());                    //Adding ArrayList to finalCSVPrinter
+    }
+
+    public void runSmalter(int saltValue, int smoothRange, int smoothCount) throws IOException {
+        //Create FinalCVSPrinter, since we'll be adding the array lists as we run the program
+        FinalCSVPrinter finalCSVPrinter = new FinalCSVPrinter(inputs);
+
+        //Add the initial output array list before manipulating it
+        finalCSVPrinter.addList(csvreader.getOutputs());
 
         //Smalter = SMelter + sALTER
         //Salt the list and print out the results
         Smalter smalter = new Smalter();
         System.out.println("Salted list:");
-        smalter.salter(csvreader.getOutputs(), 10000);
+        smalter.salter(csvreader.getOutputs(), saltValue);
         csvreader.printArrayLists();
-        finalCSVPrinter.addList(csvreader.getOutputs());                    //Adding again, will do this after
-                                                                            //each change
+        finalCSVPrinter.addList(csvreader.getOutputs());
+
         //Smooth the list and print out the results
         System.out.println("Smoothed list:");
-        smalter.smoother(csvreader.getOutputs(), 3, 100);
+        smalter.smoother(csvreader.getOutputs(), smoothRange, smoothCount);
         csvreader.printArrayLists();
         finalCSVPrinter.addList(csvreader.getOutputs());
 
