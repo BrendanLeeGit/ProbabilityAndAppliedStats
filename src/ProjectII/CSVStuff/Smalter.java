@@ -1,13 +1,13 @@
 package ProjectII.CSVStuff;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.SplittableRandom;
 
 public class Smalter {
-    private Random random;
+    private SplittableRandom random;
 
     public Smalter(){
-        random = new Random();
+        random = new SplittableRandom();
     }
 
     /**
@@ -21,6 +21,8 @@ public class Smalter {
 
         //Loop through entire ArrayList and salt each data point
         for (int i = 0; i < outputs.size(); i++) {
+
+            //I genuinely have no idea why the nextInt method is underlined in red. It still runs fine.
             negativeOrPositive = random.nextInt(2);   //Generate random numbers for the two local variables
             saltInt = random.nextInt(saltValue);
 
