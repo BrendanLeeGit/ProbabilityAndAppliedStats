@@ -20,13 +20,12 @@ public class Model implements Subject{
     private ArrayList<Double> outputs;
     private ArrayList<Double> inputs;
     private FileWriter fileWriter;
-    //only have one observer so not gonna bother making an arraylist
+
     private Observer observer;
     private DefaultCategoryDataset dataset;
     private JFreeChart dataChart;
 
     private int fileNameIncrement;
-
     private SplittableRandom spliRand;
 
     public Model(){
@@ -117,6 +116,9 @@ public class Model implements Subject{
 
     }
 
+    /**
+     * Builds the data set from the outputs array list for use in graph creation.
+     */
     public void buildDataSet(){
         dataset = new DefaultCategoryDataset();
         for (int i = 0; i < outputs.size(); i++) {
@@ -124,6 +126,9 @@ public class Model implements Subject{
         }
     }
 
+    /**
+     * Takes the generated dataset and builds a line chart from the information.
+     */
     public void buildLineChart(){
         dataChart = ChartFactory.createLineChart(
                 "Function Output","x",
@@ -133,7 +138,7 @@ public class Model implements Subject{
 
     /**
      * This is a band-aid solution to the file updating problem. By changing the name each time,
-     * hopefully Intellij reads it as an entirely new file and lets it update correctly.
+     * Intellij reads it as an entirely new file and uses the updated information correctly.
      *
      * @return  The new incremented file name
      */
@@ -141,6 +146,13 @@ public class Model implements Subject{
         return "C:\\ProbabilityAndAppliedStats\\LineChart" + fileNameIncrement++ + ".jpeg";
     }
 
+    /**
+     * Saves the line chart as a JPEG in the directory in order to change the icon of the JLabel displaying the graph.
+     * After notifying observers that the model has changed, it then deletes the file to remove clutter and prevent the
+     * issue of file changes being unrecognized.
+     *
+     * @throws IOException
+     */
     public void saveLineChart() throws IOException {
         File fileLineChart = new File(fileNameBuilder());
         ChartUtilities.saveChartAsJPEG( fileLineChart, dataChart, 650 , 480);
@@ -152,6 +164,11 @@ public class Model implements Subject{
         fileLineChart.delete();
     }
 
+    /**
+     * Saves the generated LineChart.jpeg to the directory.
+     *
+     * @throws IOException
+     */
     public void exportChart() throws IOException {
         File fileLineChart = new File("C:\\ProbabilityAndAppliedStats\\LineChart.jpeg");
         ChartUtilities.saveChartAsJPEG( fileLineChart, dataChart, 650 , 480);
