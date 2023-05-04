@@ -1,70 +1,32 @@
 package ProjectII.PlottingDataApacheAndFreeCharts;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
+import java.io.File;
 
-/**
- * Note: This class is 99.9% copied from: https://www.tutorialspoint.com/jfreechart/jfreechart_bar_chart.htm
- *       to serve as a reference for me.
- */
+public class TestingChart {
 
-public class TestingChart extends ApplicationFrame {
+    public static void main( String[ ] args ) throws Exception {
+        DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+        line_chart_dataset.addValue( 15 , "schools" , "1970" );
+        line_chart_dataset.addValue( 30 , "schools" , "1980" );
+        line_chart_dataset.addValue( 60 , "schools" , "1990" );
+        line_chart_dataset.addValue( 120 , "schools" , "2000" );
+        line_chart_dataset.addValue( 240 , "schools" , "2010" );
+        line_chart_dataset.addValue( 300 , "schools" , "2014" );
 
-    public TestingChart(String applicationTitle , String chartTitle ) {
-        super( applicationTitle );
-        JFreeChart barChart = ChartFactory.createBarChart(
-                chartTitle,
-                "Category",
-                "Score",
-                createDataset(),
-                PlotOrientation.VERTICAL,
-                true, true, false);
+        JFreeChart lineChartObject = ChartFactory.createLineChart(
+                "Schools Vs Years","Year",
+                "Schools Count",
+                line_chart_dataset,PlotOrientation.VERTICAL,
+                true,true,false);
 
-        ChartPanel chartPanel = new ChartPanel( barChart );
-        chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );
-        setContentPane( chartPanel );
-    }
-
-    private CategoryDataset createDataset( ) {
-        final String fiat = "FIAT";
-        final String audi = "AUDI";
-        final String ford = "FORD";
-        final String speed = "Speed";
-        final String millage = "Millage";
-        final String userrating = "User Rating";
-        final String safety = "safety";
-        final DefaultCategoryDataset dataset =
-                new DefaultCategoryDataset( );
-
-        dataset.addValue( 1.0 , fiat , speed );
-        dataset.addValue( 3.0 , fiat , userrating );
-        dataset.addValue( 5.0 , fiat , millage );
-        dataset.addValue( 5.0 , fiat , safety );
-
-        dataset.addValue( 5.0 , audi , speed );
-        dataset.addValue( 6.0 , audi , userrating );
-        dataset.addValue( 10.0 , audi , millage );
-        dataset.addValue( 4.0 , audi , safety );
-
-        dataset.addValue( 4.0 , ford , speed );
-        dataset.addValue( 2.0 , ford , userrating );
-        dataset.addValue( 3.0 , ford , millage );
-        dataset.addValue( 6.0 , ford , safety );
-
-        return dataset;
-    }
-
-    public static void main( String[ ] args ) {
-        TestingChart chart = new TestingChart("Car Usage Statistics",
-                "Which car do you like?");
-        chart.pack( );
-        RefineryUtilities.centerFrameOnScreen( chart );
-        chart.setVisible( true );
+        int width = 640;    /* Width of the image */
+        int height = 480;   /* Height of the image */
+        File lineChart = new File( "LineChart.jpeg" );
+        ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, width ,height);
     }
 }

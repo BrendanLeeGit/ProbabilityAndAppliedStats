@@ -1,7 +1,10 @@
 package ProjectII.PlottingDataApacheAndFreeCharts;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
+import org.jfree.data.category.DefaultCategoryDataset;
+
 import java.util.Random;
+
 /**
  * Going to test using a window and calculating the average of that window for the rolling average smoother
  */
@@ -30,6 +33,8 @@ public class TestingSmoother {
             System.out.println(smoothedArray[i]);
         }
 
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(1.0, "Poop", "poo");
 
     }
 }

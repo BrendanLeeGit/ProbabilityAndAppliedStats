@@ -1,5 +1,10 @@
 package ProjectII.StatsLibrary;
 
+/*
+ * The newer functions are at the bottom of the file. I kept mean, combinations, factorial, and the others
+ * since they're used in the new functions for Project II.
+ */
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
@@ -126,7 +131,7 @@ public class StatsLibrary {
     }
 
     /**
-     * Just proving the Chebyshevs theorem I suppose. With proper values, it should always come to 75% I believe.
+     * Implementation of Chebyshevs Theorem.
      *
      * @param lowerBound        Not exactly needed, but good to have
      * @param upperBound        Upper bound of your dataset
