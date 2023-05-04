@@ -96,9 +96,12 @@ public class Model implements Subject{
             //create the window with a range of 5
             DescriptiveStatistics descStat = new DescriptiveStatistics(smoothRange);
 
+            //The index that is set needs to be the one in the middle of the rolling average
             for (int i = 0; i < outputs.size(); i++){
                 descStat.addValue(outputs.get(i));
-                outputs.set(i, descStat.getMean());
+                if (i >= smoothRange/2) {
+                    outputs.set(i - (smoothRange / 2), descStat.getMean());
+                }
             }
         }
 

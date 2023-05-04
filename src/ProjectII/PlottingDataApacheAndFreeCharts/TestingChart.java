@@ -7,6 +7,11 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import java.io.File;
 
+/**
+ * Note, almost the entire file is copied directly from Tutorials Point. This file served as a reference for me when
+ * I was figuring out how JFreeCharts worked.
+ */
+
 public class TestingChart {
 
     public static void main( String[ ] args ) throws Exception {
