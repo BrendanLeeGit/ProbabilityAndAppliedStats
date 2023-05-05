@@ -1,6 +1,6 @@
 # ProbabilityAndAppliedStats
 
-#ProjectI
+ProjectI
 .idea can be mostly ignored since I didn't end up using any complicated or outside modules or anything crazy.
 src has the different directories for all of the main programming assignments.
 Additionally, ProjectI.OtherFiles will contain non-programming work such as the Histogram sheets.
@@ -17,7 +17,7 @@ GitHub report is the one page essay on git workflow.
 Additionally, you may see that GameUnmaker is also a contributor for some of the code. 
 That's my other account. I had a few issues in the beginning with using the correct account to push my changes.
 
-#ProjectII
+ProjectII
 I generally recommend you view the reports first, mainly because I included a small instructions section for the personal salter and smoother, as well as the JFreeCharts and ApacheCommons implementation.
 
 Each of the reports as well as the formula sheet is bunched together in the Formula Sheet and Reports directory.
