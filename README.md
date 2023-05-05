@@ -4,7 +4,7 @@ ProjectII
 
 I generally recommend you view the reports first, mainly because I included a small instructions section for the personal salter and smoother, as well as the JFreeCharts and ApacheCommons implementation.
 
-Each of the reports as well as the formula sheet is bunched together in the Formula Sheet and Reports directory.
+Each of the reports as well as the formula sheet is bunched together in the Formula Sheet and Reports directory. It also contains extra credit considerations, though there isn't very much. 
 
 CSVStuff contains the personal plotter and smoother.
 OctaveStuff contains the scripts as well as the resulting CSV files.
